@@ -1,0 +1,67 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.doubleBounce1,
+.doubleBounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--brand-color, #0ea5e9);
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 20px var(--brand-color, #0ea5e9);
+
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.doubleBounce2 {
+  background-color: #a5b4fc;
+  box-shadow: 0 0 20px #a5b4fc;
+  animation-delay: -1s;
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+:global(.searchBtn) .overlay,
+:global(.submitBtn) .overlay {
+  position: relative;
+  width: auto;
+  height: auto;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+:global(.searchBtn) .spinner,
+:global(.submitBtn) .spinner {
+  width: 20px;
+  height: 20px;
+}

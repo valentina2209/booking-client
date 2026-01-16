@@ -1,0 +1,195 @@
+.page {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.initialLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: var(--text-secondary);
+  gap: 20px;
+}
+
+.addBtn {
+  background: var(--grad-main);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.5);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.userCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.userCard:hover {
+  border-color: var(--brand-color);
+  background: rgba(255, 255, 255, 0.03);
+  transform: scale(1.01);
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+}
+
+.userInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.userName {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.roleBadge {
+  display: inline-block;
+}
+
+.roleBusiness,
+.roleClient {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.roleBusiness {
+  background: rgba(165, 180, 252, 0.1);
+  color: #a5b4fc;
+  border: 1px solid rgba(165, 180, 252, 0.2);
+}
+
+.roleClient {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--brand-color);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn,
+.deleteBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.editBtn:hover {
+  color: var(--brand-color);
+  border-color: var(--brand-color);
+  background: rgba(14, 165, 233, 0.1);
+}
+
+.deleteBtn:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBackdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  position: relative;
+  background: #0f172a;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .userCard {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+  }
+}
