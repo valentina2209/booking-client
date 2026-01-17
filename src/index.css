@@ -21,6 +21,10 @@
   --transition: all 0.3s ease;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: var(--bg-main);

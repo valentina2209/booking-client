@@ -10,6 +10,7 @@
   align-items: center;
   gap: 16px;
   text-align: center;
+  margin-top: auto;
 }
 
 .text {
@@ -19,6 +20,8 @@
   line-height: 1.6;
   color: var(--text-secondary);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .text strong {
@@ -58,9 +61,11 @@
 @media (max-width: 480px) {
   .footer {
     padding: 30px 15px;
+    gap: 10px;
   }
 
   .text {
     font-size: 0.85rem;
+    width: 100%;
   }
 }
