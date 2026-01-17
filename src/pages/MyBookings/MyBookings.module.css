@@ -71,14 +71,19 @@
 }
 
 .card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15;
+  margin-bottom: 15px;
+  padding: 20px;
+
   background: var(--bg-glass);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
   transition: var(--transition);
   animation: slideIn 0.4s ease-out backwards;
 }
@@ -111,33 +116,66 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
+  margin-top: 15px;
 }
 
 .statusBadge {
-  background: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-  padding: 6px 14px;
-  border-radius: 99px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  font-size: 10px;
+  font-weight: 800;
   text-transform: uppercase;
+
   border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 99px;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 6px 14px;
+}
+
+.editBtn,
+.cancelBtn {
+  width: 140px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all, 0.3s ease;
+  padding: 6px 14px;
+  border: 1px solid;
+}
+
+.editBtn {
+  background: transparent;
+  color: var(--brand-color, #0ea5e9);
+  border-color: var(--brand-color, #0ea5e9);
+}
+
+.editBtn:hover {
+  background: var(--brand-color, #0ea5e9);
+  color: #020617;
+  box-shadow: 0 0 15px var(--brand-color, #0ea5e9);
 }
 
 .cancelBtn {
   background: transparent;
   color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 8px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 0.85rem;
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .cancelBtn:hover {
-  background: rgba(239, 68, 68, 0.1);
+  background: #ef4444;
+  color: #fff;
   border-color: #ef4444;
 }
 
@@ -181,11 +219,7 @@
   }
 
   .actions {
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .cancelBtn {
+    align-items: flex-end;
     width: 100%;
   }
 }

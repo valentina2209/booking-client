@@ -35,7 +35,7 @@
   max-width: 1300px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 10px;
   position: relative;
   z-index: 1;
 }
@@ -56,6 +56,10 @@
 
 .main {
   animation: fadeInLayout 0.6s ease-out;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 @keyframes fadeInLayout {

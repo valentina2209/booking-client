@@ -4,15 +4,17 @@ import styles from './MyBookings.module.css';
 import Loader from '@/components/Loader/Loader';
 import toast from 'react-hot-toast';
 import { confirmToast } from '@/utils/confirmToast';
+import BookingForm from '@/components/BookingForm/BookingForm';
 
 const MyBookings = () => {
     const [email, setEmail] = useState('');
     const [bookings, setBookings] = useState([]);
     const [hasSearched, setHasSearched] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [editingBooking, setEditingBooking] = useState(null)
 
-    const handleSearch = async (e) => {
-        e.preventDefault();
+    const handleSearch = async (event) => {
+        event.preventDefault();
         if (!email) return;
 
         setLoading(true);
@@ -39,6 +41,11 @@ const MyBookings = () => {
             }
         });
     };
+
+    const handleUpdateSuccess = () => {
+        setEditingBooking(null)
+        handleSearch({ preventDefault: () => { } });
+    }
 
     return (
         <div className={styles.container}>
@@ -69,6 +76,10 @@ const MyBookings = () => {
 
                 {bookings.map((booking) => (
                     <div key={booking._id} className={styles.card}>
+                        <span className={styles.statusBadge}>
+                            {booking.status === 'active' ? 'Підтверджено' : booking.status}
+                        </span>
+
                         <div className={styles.info}>
                             <h3 className={styles.businessName}>
                                 {booking.businessId?.name || "Послуга"}
@@ -80,19 +91,37 @@ const MyBookings = () => {
                         </div>
 
                         <div className={styles.actions}>
-                            <span className={styles.statusBadge}>
-                                {booking.status === 'active' ? 'Підтверджено' : booking.status}
-                            </span>
+                            <button
+                                onClick={() => setEditingBooking(booking)}
+                                className={styles.editBtn}
+                            >
+                                Редагувати запис
+                            </button>
+
                             <button
                                 onClick={() => handleCancel(booking._id)}
                                 className={styles.cancelBtn}
                             >
                                 Скасувати запис
                             </button>
+
                         </div>
                     </div>
                 ))}
             </div>
+
+            {editingBooking && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modalContent}>
+                        <BookingForm
+                            businessId={editingBooking.businessId?._id}
+                            bookingToEdit={editingBooking}
+                            onClose={() => setEditingBooking(null)}
+                            onSave={handleUpdateSuccess}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

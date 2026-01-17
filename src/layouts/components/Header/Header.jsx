@@ -17,7 +17,7 @@ function Header() {
                     to={frontRoutes.PAGES.BUSINESSES.ROOT}
                     className={({ isActive }) => [styles.link, isActive ? styles.active : ''].join(' ')}
                 >
-                    Заклади
+                    Бізнес
                 </NavLink>
                 <NavLink
                     to={frontRoutes.PAGES.MY_BOOKINGS}
