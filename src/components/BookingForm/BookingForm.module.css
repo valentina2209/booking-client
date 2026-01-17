@@ -111,12 +111,17 @@
   border-color: #ef4444;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .container {
     padding: 100px 15px 40px;
   }
 
   .form {
     padding: 24px;
+  }
+
+  .input {
+    width: 100%;
+    padding: 14px 5px;
   }
 }
